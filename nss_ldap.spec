@@ -1,4 +1,4 @@
-# $Revision: 1.49 $Date: 2003-05-25 05:51:13 $
+# $Revision: 1.50 $Date: 2003-05-28 12:59:55 $
 #
 # Conditional builds:
 # _with_openldap1 - build with openldap < 2.0.0
@@ -13,6 +13,7 @@ Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
+# Source0-md5:	4cff03af355d9df5b6da87295b5bc712
 Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-nolibs.patch
 URL:		http://www.padl.com/nss_ldap.html
