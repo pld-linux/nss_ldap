@@ -7,12 +7,12 @@ Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	207
+Version:	210
 Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
-# Source0-md5:	4cff03af355d9df5b6da87295b5bc712
+# Source0-md5:	4209de3cacedcc252c5273a0664b1ea9
 Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-nolibs.patch
 URL:		http://www.padl.com/nss_ldap.html
