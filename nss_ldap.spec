@@ -1,7 +1,7 @@
-# $Revision: 1.19 $Date: 2000-09-18 08:00:51 $
+# $Revision: 1.20 $Date: 2000-10-16 11:10:36 $
 Summary:	LDAP Name Service Switch Module
 Name:		nss_ldap
-Version:	116
+Version:	120
 Release:	1
 License:	LGPL
 Group:		Base
