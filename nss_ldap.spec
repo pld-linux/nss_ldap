@@ -18,10 +18,10 @@ Patch1:		%{name}-nolibs.patch
 URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{!?_with_openldap1:BuildRequires:	openldap-devel >= 2.0.0}
-%{?_with_openldap1:BuildRequires:	openldap-devel <  2.0.0}
-%{?_with_openldap1:BuildRequires:	openldap-devel >  1.2.0}
-%{!?_without_mapping:BuildRequires:	db-devel}
+%{!?with_openldap1:BuildRequires:	openldap-devel >= 2.0.0}
+%{?with_openldap1:BuildRequires:	openldap-devel <  2.0.0}
+%{?with_openldap1:BuildRequires:	openldap-devel >  1.2.0}
+%{?with_mapping:BuildRequires:	db-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libdir		/lib
@@ -80,7 +80,7 @@ rm -f missing
 %{__automake}
 %configure \
 	--with-ldap-lib=openldap \
-%if !%{without mapping}
+%if %{with mapping}
 	--enable-schema-mapping \
 	--enable-rfc2307bis \
 %endif
