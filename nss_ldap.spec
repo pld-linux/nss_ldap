@@ -1,4 +1,4 @@
-# $Revision: 1.36 $Date: 2001-12-06 12:56:48 $
+# $Revision: 1.37 $Date: 2002-01-18 02:14:03 $
 #
 # Conditional builds:	
 # --with openldap1 - build with openldap < 2.0.0
