@@ -6,7 +6,7 @@ diff -ur nss_ldap-211-orig/ldap-pwd.c nss_ldap-211/ldap-pwd.c
  				  &buflen);
        if (stat != NSS_SUCCESS)
 -	return stat;
-+        (void) _nss_ldap_assign_emptystring (&pw->pw_dir, &buffer, &buflen);
++        (void) _nss_ldap_assign_emptystring (&pw->pw_gecos, &buffer, &buflen);
      }
  
    stat =
