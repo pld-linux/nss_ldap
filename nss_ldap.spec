@@ -1,4 +1,4 @@
-# $Revision: 1.38 $Date: 2002-01-25 15:34:57 $
+# $Revision: 1.39 $Date: 2002-02-22 23:29:20 $
 #
 # Conditional builds:	
 # --with openldap1 - build with openldap < 2.0.0
@@ -10,10 +10,6 @@ Version:	173
 Release:	3
 License:	LGPL
 Group:		Base
-Group(de):	Gründsätzlich
-Group(es):	Base
-Group(pl):	Podstawowe
-Group(pt_BR):	Base
 Source0:	ftp://ftp.padl.com/pub/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am_fixes.patch
 URL:		http://www.padl.com/nss_ldap.html
