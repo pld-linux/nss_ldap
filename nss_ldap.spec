@@ -1,26 +1,29 @@
-# $Revision: 1.48.2.1 $Date: 2003-07-11 12:02:10 $
+# $Revision: 1.48.2.2 $Date: 2004-12-29 22:26:01 $
 #
 # Conditional builds:
-# _with_openldap1 - build with openldap < 2.0.0
+%bcond_with	openldap1	# build with openldap < 2.0.0
+%bcond_without	mapping		# build without support for schema mapping/rfc2307bis
 #
 Summary:	LDAP Name Service Switch Module
 Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	207
+Version:	227
 Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
+# Source0-md5:	b5449be8d673eacac882ee035ea9a824
 Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-nolibs.patch
+Patch2:		%{name}-gecos-optional.patch
 URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{!?_with_openldap1:BuildRequires: openldap-devel >= 2.0.0}
-%{?_with_openldap1:BuildRequires:  openldap-devel <  2.0.0}
-%{?_with_openldap1:BuildRequires:  openldap-devel >  1.2.0}
+%{!?without_openldap1:BuildRequires: openldap-devel >= 2.0.0}
+%{?with_openldap1:BuildRequires:  openldap-devel <  2.0.0}
+%{?with_openldap1:BuildRequires:  openldap-devel >  1.2.0}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libdir		/lib
@@ -71,6 +74,7 @@ etc.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f missing
@@ -78,7 +82,14 @@ rm -f missing
 %{__autoconf}
 %{__automake}
 %configure \
-	--with-ldap-lib=openldap
+	--with-ldap-lib=openldap \
+%if %{with mapping}
+	--enable-schema-mapping \
+	--enable-rfc2307bis \
+%endif
+	--enable-paged-results \
+	--enable-configurable-krb5-ccname-env
+
 %{__make}
 
 %install
@@ -96,5 +107,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ANNOUNCE AUTHORS ChangeLog NEWS README nsswitch*
-%attr(0755,root,root) %{_libdir}/*.so*
+%doc ANNOUNCE AUTHORS ChangeLog NEWS README nsswitch* ldap.conf
+%attr(755,root,root) %{_libdir}/*.so*
