@@ -1,11 +1,11 @@
-# $Revision: 1.13 $Date: 2000-04-01 11:15:08 $
+# $Revision: 1.14 $Date: 2000-05-05 15:05:59 $
 Summary:	LDAP Name Service Switch Module
 Name:		nss_ldap
 Version:	107
 Release:	1
 License:	LGPL
 Group:		Base
-Group(pl):	Bazowe
+Group(pl):	Podstawowe
 Source0:	ftp://ftp.padl.com/pub/%{name}-%{version}.tar.gz
 URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	openldap-devel 
