@@ -9,7 +9,7 @@
  
  AC_CHECK_FUNCS(strtok_r)
  AC_CHECK_FUNCS(sigset)
-@@ -160,8 +160,10 @@
+@@ -188,8 +188,10 @@
    with_ldap_lib=auto
  fi
  
@@ -17,8 +17,8 @@
 -AC_CHECK_LIB(db, main,[LIBS="-ldb $LIBS"],,$LIBS)
 +dnl AC_CHECK_LIB(dl, dlopen,[LIBS="-ldl $LIBS"],,$LIBS)
 +if test "$enable_rfc2307bis" = "yes" -o "$enable_schema_mapping" = "yes" ; then
-+	AC_CHECK_LIB(db, main,[LIBS="-ldb $LIBS"],,$LIBS)
++       AC_CHECK_LIB(db, main,[LIBS="-ldb $LIBS"],,$LIBS)
 +fi
+ AC_CHECK_LIB(gssapi_krb5, gss_krb5_ccache_name,[LIBS="-lgssapi_krb5 $LIBS"],,$LIBS)
  dnl Following checks probably not strictly necessary.
  dnl AC_CHECK_LIB(crypto, main,[LIBS="-lcrypto $LIBS"],,$LIBS)
- dnl AC_CHECK_LIB(ssl, main,[LIBS="-lssl $LIBS"],,$LIBS)
