@@ -1,4 +1,4 @@
-# $Revision: 1.41 $Date: 2002-03-24 23:28:22 $
+# $Revision: 1.41.2.1 $Date: 2002-04-04 12:36:51 $
 #
 # Conditional builds:
 # --with openldap1 - build with openldap < 2.0.0
@@ -6,8 +6,8 @@
 Summary:	LDAP Name Service Switch Module
 Summary(pl):	Modu³ NSS LDAP
 Name:		nss_ldap
-Version:	173
-Release:	3
+Version:	186
+Release:	0.1
 License:	LGPL
 Group:		Base
 Source0:	ftp://ftp.padl.com/pub/%{name}-%{version}.tar.gz
