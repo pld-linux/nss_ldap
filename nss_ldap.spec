@@ -1,4 +1,4 @@
-# $Revision: 1.1 $
+# $Revision: 1.2 $
 Summary: LDAP Name Service Switch Module
 Name: nss_ldap
 Version: 85
@@ -8,6 +8,7 @@ Patch0: nss_ldap-makefile.patch
 URL: http://www.padl.com/
 Copyright: LGPL
 Group: System Environment/Base
+BuildRequires: openldap-devel 
 BuildRoot: /var/tmp/%{name}-root
 
 %description 
