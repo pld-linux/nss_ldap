@@ -7,12 +7,12 @@ Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	210
-Release:	1.1
+Version:	211
+Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
-# Source0-md5:	4209de3cacedcc252c5273a0664b1ea9
+# Source0-md5:	34adcab5d46a436617ae686cc7c5e78f
 Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-nolibs.patch
 URL:		http://www.padl.com/nss_ldap.html
@@ -84,7 +84,9 @@ rm -f missing
 	--enable-schema-mapping \
 	--enable-rfc2307bis \
 %endif
-	--enable-paged-results
+	--enable-paged-results \
+	--enable-configurable-krb5-ccname
+
 %{__make}
 
 %install
@@ -102,5 +104,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ANNOUNCE AUTHORS ChangeLog NEWS README nsswitch*
+%doc ANNOUNCE AUTHORS ChangeLog NEWS README nsswitch* ldap.conf
 %attr(0755,root,root) %{_libdir}/*.so*
