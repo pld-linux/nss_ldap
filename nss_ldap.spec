@@ -1,6 +1,6 @@
-# $Revision: 1.39 $Date: 2002-02-22 23:29:20 $
+# $Revision: 1.40 $Date: 2002-02-23 04:05:42 $
 #
-# Conditional builds:	
+# Conditional builds:
 # --with openldap1 - build with openldap < 2.0.0
 #
 Summary:	LDAP Name Service Switch Module
@@ -22,7 +22,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libdir		/lib
 
-%description 
+%description
 This is nss_ldap, a name service switch module that can be used with
 glibc-2.1.xx.
 
