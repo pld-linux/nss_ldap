@@ -1,4 +1,4 @@
-# $Revision: 1.37 $Date: 2002-01-18 02:14:03 $
+# $Revision: 1.38 $Date: 2002-01-25 15:34:57 $
 #
 # Conditional builds:	
 # --with openldap1 - build with openldap < 2.0.0
@@ -7,7 +7,7 @@ Summary:	LDAP Name Service Switch Module
 Summary(pl):	Modu³ NSS LDAP
 Name:		nss_ldap
 Version:	173
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Base
 Group(de):	Gründsätzlich
@@ -65,4 +65,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc *.gz doc/*.gz
-%attr(0755,root,root) %{_libdir}/*.so
+%attr(0755,root,root) %{_libdir}/*.so*
