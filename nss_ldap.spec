@@ -1,4 +1,4 @@
-# $Revision: 1.20 $Date: 2000-10-16 11:10:36 $
+# $Revision: 1.21 $Date: 2000-10-16 11:11:10 $
 Summary:	LDAP Name Service Switch Module
 Name:		nss_ldap
 Version:	120
@@ -9,7 +9,7 @@ Group(de):	Gründsätzlich
 Group(pl):	Podstawowe
 Source0:	ftp://ftp.padl.com/pub/%{name}-%{version}.tar.gz
 URL:		http://www.padl.com/nss_ldap.html
-BuildRequires:	openldap-devel 
+BuildRequires:	openldap-devel >= 2.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description 
