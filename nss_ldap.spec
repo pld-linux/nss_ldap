@@ -107,3 +107,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ANNOUNCE AUTHORS ChangeLog NEWS README nsswitch* ldap.conf
 %attr(755,root,root) %{_libdir}/*.so*
+%{_mandir}/man5/*
