@@ -1,4 +1,4 @@
-# $Revision: 1.24 $Date: 2000-12-13 10:43:16 $
+# $Revision: 1.25 $Date: 2000-12-23 00:48:46 $
 #
 # Conditional builds:	
 # --with openldap1 - build with openldap < 2.0.0
@@ -27,7 +27,7 @@ glibc-2.1.xx.
 
 %build
 %{__make} -f Makefile.linux%{!?bcond_on_openldap1:.openldap2} \
-	GCCFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g} -Wall -fPIC"
+	GCCFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS} -Wall -fPIC"
 
 %install
 rm -rf $RPM_BUILD_ROOT
