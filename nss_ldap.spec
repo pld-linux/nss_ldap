@@ -1,15 +1,21 @@
-# $Revision: 1.21 $Date: 2000-10-16 11:11:10 $
+# $Revision: 1.22 $Date: 2000-10-30 13:14:11 $
+#
+# Conditional builds:
+# openldap1 - build with openldap < 2.0.0
+#
 Summary:	LDAP Name Service Switch Module
 Name:		nss_ldap
-Version:	120
-Release:	1
+Version:	122
+Release:	0.1
 License:	LGPL
 Group:		Base
 Group(de):	Gründsätzlich
 Group(pl):	Podstawowe
 Source0:	ftp://ftp.padl.com/pub/%{name}-%{version}.tar.gz
 URL:		http://www.padl.com/nss_ldap.html
-BuildRequires:	openldap-devel >= 2.0.0
+%{!?openldap1:BuildRequires: openldap-devel >= 2.0.0}
+%{?openldap1:BuildRequires:  openldap-devel <  2.0.0}
+%{?openldap1:BuildRequires:  openldap-devel >  1.2.0}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description 
@@ -20,7 +26,7 @@ glibc-2.1.xx.
 %setup -q
 
 %build
-%{__make} -f Makefile.linux.openldap2 GCCFLAGS="$RPM_OPT_FLAGS -Wall -fPIC"
+%{__make} -f Makefile.linux%{!?openldap1:.openldap2} GCCFLAGS="$RPM_OPT_FLAGS -Wall -fPIC"
 
 %install
 rm -rf $RPM_BUILD_ROOT
