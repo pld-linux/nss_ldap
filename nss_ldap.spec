@@ -1,7 +1,7 @@
-# $Revision: 1.6 $Date: 2000-01-06 04:49:48 $
+# $Revision: 1.7 $Date: 2000-03-03 12:46:29 $
 Summary:	LDAP Name Service Switch Module
 Name:		nss_ldap
-Version:	99
+Version:	105
 Release:	1
 Copyright:	LGPL
 Group:		Base
@@ -29,7 +29,7 @@ install libnss_ldap-*.so $RPM_BUILD_ROOT/lib/
 
 strip --strip-unneeded $RPM_BUILD_ROOT/lib/*
 
-gzip -9nf ANNOUNCE BUGS ChangeLog README README.LINUX
+gzip -9nf ANNOUNCE BUGS ChangeLog README CONTRIBUTORS
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -40,4 +40,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(0755,root,root) /lib/*.so
-%doc {ANNOUNCE,BUGS,ChangeLog,README,README.LINUX}.gz
+%doc {ANNOUNCE,BUGS,ChangeLog,README,CONTRIBUTORS}.gz
