@@ -1,4 +1,4 @@
-# $Revision: 1.42 $Date: 2002-04-10 20:42:50 $
+# $Revision: 1.43 $Date: 2002-05-21 23:14:15 $
 #
 # Conditional builds:
 # --with openldap1 - build with openldap < 2.0.0
@@ -70,8 +70,8 @@ etc.
 %build
 rm -f missing
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure \
 	--with-ldap-lib=openldap
 %{__make}
