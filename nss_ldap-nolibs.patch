@@ -1,15 +1,16 @@
---- nss_ldap-207/configure.in.orig	2003-04-25 04:34:05.000000000 +0200
-+++ nss_ldap-207/configure.in	2003-05-17 22:24:02.000000000 +0200
-@@ -128,7 +128,7 @@
- AC_CHECK_HEADERS(gsssasl.h)
+diff -ur nss_ldap.orig/configure.in nss_ldap/configure.in
+--- nss_ldap.orig/configure.in	2004-05-14 03:34:11.000000000 +0000
++++ nss_ldap/configure.in	2004-06-08 09:30:01.000000000 +0000
+@@ -146,7 +146,7 @@
+ AC_CHECK_HEADERS(gssapi/gssapi_krb5.h)
  
  AC_CHECK_LIB(resolv, main)
 -AC_CHECK_LIB(nsl, main)
 +AC_SEARCH_LIBS(gethostbyname, nsl)
  
  AC_CHECK_FUNCS(strtok_r)
- AC_CHECK_FUNCS(sigset)
-@@ -188,8 +188,10 @@
+ AC_CHECK_FUNCS(sigaction)
+@@ -189,8 +189,10 @@
    with_ldap_lib=auto
  fi
  
@@ -17,8 +18,8 @@
 -AC_CHECK_LIB(db, main,[LIBS="-ldb $LIBS"],,$LIBS)
 +dnl AC_CHECK_LIB(dl, dlopen,[LIBS="-ldl $LIBS"],,$LIBS)
 +if test "$enable_rfc2307bis" = "yes" -o "$enable_schema_mapping" = "yes" ; then
-+       AC_CHECK_LIB(db, main,[LIBS="-ldb $LIBS"],,$LIBS)
++	AC_CHECK_LIB(db, main,[LIBS="-ldb $LIBS"],,$LIBS)
 +fi
- AC_CHECK_LIB(gssapi_krb5, gss_krb5_ccache_name,[LIBS="-lgssapi_krb5 $LIBS"],,$LIBS)
- dnl Following checks probably not strictly necessary.
- dnl AC_CHECK_LIB(crypto, main,[LIBS="-lcrypto $LIBS"],,$LIBS)
+ 
+ AC_CHECK_LIB(gssapi, gss_krb5_ccache_name,[LIBS="-lgssapi $LIBS" found_gssapi_lib=yes],,$LIBS)
+ if test -z "$found_gssapi_lib"; then
