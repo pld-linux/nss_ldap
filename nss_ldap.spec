@@ -1,4 +1,4 @@
-# $Revision: 1.15 $Date: 2000-06-02 15:32:48 $
+# $Revision: 1.16 $Date: 2000-06-09 07:23:27 $
 Summary:	LDAP Name Service Switch Module
 Name:		nss_ldap
 Version:	110
@@ -19,7 +19,7 @@ glibc-2.1.xx.
 %setup -q
 
 %build
-make -f Makefile.linux GCCFLAGS="$RPM_OPT_FLAGS -Wall -fPIC"
+%{__make} -f Makefile.linux GCCFLAGS="$RPM_OPT_FLAGS -Wall -fPIC"
 
 %install
 rm -rf $RPM_BUILD_ROOT
