@@ -1,4 +1,4 @@
-# $Revision: 1.43 $Date: 2002-05-21 23:14:15 $
+# $Revision: 1.44 $Date: 2002-06-30 20:35:35 $
 #
 # Conditional builds:
 # --with openldap1 - build with openldap < 2.0.0
@@ -8,7 +8,7 @@ Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	186
+Version:	195
 Release:	1
 License:	LGPL
 Group:		Base
@@ -83,8 +83,6 @@ install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_libdir}}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf ANNOUNCE AUTHORS ChangeLog NEWS README nsswitch* doc/rfc*
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -93,5 +91,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz doc/*.gz
+%doc ANNOUNCE AUTHORS ChangeLog NEWS README nsswitch*
 %attr(0755,root,root) %{_libdir}/*.so*
