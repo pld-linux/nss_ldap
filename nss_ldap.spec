@@ -1,4 +1,3 @@
-# $Revision: 1.50 $Date: 2003-05-28 12:59:55 $
 #
 # Conditional builds:
 # _with_openldap1 - build with openldap < 2.0.0
