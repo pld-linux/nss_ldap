@@ -1,11 +1,11 @@
-# $Revision: 1.26 $Date: 2000-12-31 01:04:09 $
+# $Revision: 1.27 $Date: 2001-01-05 22:43:51 $
 #
 # Conditional builds:	
 # --with openldap1 - build with openldap < 2.0.0
 #
 Summary:	LDAP Name Service Switch Module
 Name:		nss_ldap
-Version:	124
+Version:	126
 Release:	1
 License:	LGPL
 Group:		Base
