@@ -1,4 +1,4 @@
-# $Revision: 1.29 $Date: 2001-04-30 16:05:25 $
+# $Revision: 1.30 $Date: 2001-05-22 09:06:33 $
 #
 # Conditional builds:	
 # --with openldap1 - build with openldap < 2.0.0
@@ -13,9 +13,9 @@ Group(de):	Gründsätzlich
 Group(pl):	Podstawowe
 Source0:	ftp://ftp.padl.com/pub/%{name}-%{version}.tar.gz
 URL:		http://www.padl.com/nss_ldap.html
-%{!?bcond_on_openldap1:BuildRequires: openldap-devel >= 2.0.0}
-%{?bcond_on_openldap1:BuildRequires:  openldap-devel <  2.0.0}
-%{?bcond_on_openldap1:BuildRequires:  openldap-devel >  1.2.0}
+%{!?_with_openldap1:BuildRequires: openldap-devel >= 2.0.0}
+%{?_with_openldap1:BuildRequires:  openldap-devel <  2.0.0}
+%{?_with_openldap1:BuildRequires:  openldap-devel >  1.2.0}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description 
@@ -26,7 +26,7 @@ glibc-2.1.xx.
 %setup -q
 
 %build
-%{__make} -f Makefile.linux%{!?bcond_on_openldap1:.openldap2} \
+%{__make} -f Makefile.linux%{!?_with_openldap1:.openldap2} \
 	GCCFLAGS="%{rpmcflags} -Wall -fPIC"
 
 %install
