@@ -1,4 +1,4 @@
-# $Revision: 1.45 $Date: 2002-10-09 13:14:41 $
+# $Revision: 1.46 $Date: 2002-10-14 19:13:28 $
 #
 # Conditional builds:
 # --with openldap1 - build with openldap < 2.0.0
@@ -8,7 +8,7 @@ Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	195
+Version:	202
 Release:	1
 License:	LGPL
 Group:		Base
