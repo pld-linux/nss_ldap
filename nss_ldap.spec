@@ -1,14 +1,14 @@
 #
 # Conditional builds:
-# _with_openldap1 - build with openldap < 2.0.0
-#
+%bcond_with openldap1 	# build with openldap < 2.0.0
+%bcond_with mapping	# build with support for schema mapping/rfc2307bis
 Summary:	LDAP Name Service Switch Module
 Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
 Version:	210
-Release:	1
+Release:	1.1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
@@ -21,6 +21,7 @@ BuildRequires:	automake
 %{!?_with_openldap1:BuildRequires:	openldap-devel >= 2.0.0}
 %{?_with_openldap1:BuildRequires:	openldap-devel <  2.0.0}
 %{?_with_openldap1:BuildRequires:	openldap-devel >  1.2.0}
+%{?_with_mapping:BuildRequires:		db-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libdir		/lib
@@ -78,7 +79,12 @@ rm -f missing
 %{__autoconf}
 %{__automake}
 %configure \
-	--with-ldap-lib=openldap
+	--with-ldap-lib=openldap \
+%if %{with mapping}
+	--enable-schema-mapping \
+	--enable-rfc2307bis \
+%endif
+	--enable-paged-results
 %{__make}
 
 %install
