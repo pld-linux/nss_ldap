@@ -1,30 +1,32 @@
+# $Revision: 1.48.2.6 $Date: 2005-04-04 21:29:36 $
 #
 # Conditional builds:
-%bcond_without mapping	# build without support for schema mapping/rfc2307bis
+%bcond_with	openldap1	# build with openldap < 2.0.0
+%bcond_without	mapping		# build without support for schema mapping/rfc2307bis
 #
 Summary:	LDAP Name Service Switch Module
 Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	235
-Release:	2
+Version:	238
+Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
-# Source0-md5:	38e5d0cd318a62c3c358b894bf563948
+# Source0-md5:	97fd929b381329b972b3c3ddca5a4bbf
 Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-gecos-optional.patch
 URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{?with_mapping:BuildRequires:	db-devel}
-BuildRequires:	openldap-devel >= 2.0.0
-BuildRequires:	cyrus-sasl-devel
+%{!?without_openldap1:BuildRequires: openldap-devel >= 2.0.0}
+%{?with_openldap1:BuildRequires:  openldap-devel <  2.0.0}
+%{?with_openldap1:BuildRequires:  openldap-devel >  1.2.0}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_libdir		/%{_lib}
+%define		_libdir		/lib
 
 %description
 nss_ldap is a C library extension (NSS module) which allows X.500 and
@@ -75,9 +77,9 @@ etc.
 %patch2 -p1
 
 %build
+rm -f missing
 %{__aclocal}
 %{__autoconf}
-%{__autoheader}
 %{__automake}
 %configure \
 	--with-ldap-lib=openldap \
@@ -107,3 +109,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ANNOUNCE AUTHORS ChangeLog NEWS README nsswitch* ldap.conf
 %attr(755,root,root) %{_libdir}/*.so*
+%{_mandir}/man5/*
