@@ -1,6 +1,6 @@
-# $Revision: 1.22 $Date: 2000-10-30 13:14:11 $
+# $Revision: 1.23 $Date: 2000-11-08 21:25:05 $
 #
-# Conditional builds:
+# Conditional builds:	
 # openldap1 - build with openldap < 2.0.0
 #
 Summary:	LDAP Name Service Switch Module
@@ -26,14 +26,14 @@ glibc-2.1.xx.
 %setup -q
 
 %build
-%{__make} -f Makefile.linux%{!?openldap1:.openldap2} GCCFLAGS="$RPM_OPT_FLAGS -Wall -fPIC"
+%{__make} -f Makefile.linux%{!?openldap1:.openldap2} \
+	GCCFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g} -Wall -fPIC"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/lib
-install libnss_ldap-*.so $RPM_BUILD_ROOT/lib/
 
-strip --strip-unneeded $RPM_BUILD_ROOT/lib/*
+install libnss_ldap-*.so $RPM_BUILD_ROOT/lib/
 
 gzip -9nf ANNOUNCE BUGS ChangeLog README CONTRIBUTORS nsswitch* rfc*
 
@@ -45,5 +45,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {ANNOUNCE,BUGS,ChangeLog,README,CONTRIBUTORS}.gz nsswitch*.gz rfc*.gz
+%doc *.gz
 %attr(0755,root,root) /lib/*.so
