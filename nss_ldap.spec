@@ -1,4 +1,4 @@
-# $Revision: 1.46 $Date: 2002-10-14 19:13:28 $
+# $Revision: 1.47 $Date: 2003-05-12 15:12:16 $
 #
 # Conditional builds:
 # --with openldap1 - build with openldap < 2.0.0
@@ -12,7 +12,7 @@ Version:	202
 Release:	1
 License:	LGPL
 Group:		Base
-Source0:	ftp://ftp.padl.com/pub/%{name}-%{version}.tar.gz
+Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am_fixes.patch
 URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	autoconf
