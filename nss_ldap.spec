@@ -8,13 +8,14 @@ Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
 Version:	211
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
 # Source0-md5:	34adcab5d46a436617ae686cc7c5e78f
 Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-nolibs.patch
+Patch2:		%{name}-gecos-optional.patch
 URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -73,6 +74,7 @@ etc.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f missing
