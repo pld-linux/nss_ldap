@@ -1,4 +1,4 @@
-# $Revision: 1.48.2.4 $Date: 2005-02-02 09:23:39 $
+# $Revision: 1.48.2.5 $Date: 2005-03-16 20:08:28 $
 #
 # Conditional builds:
 %bcond_with	openldap1	# build with openldap < 2.0.0
@@ -9,12 +9,12 @@ Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	233
+Version:	235
 Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
-# Source0-md5:	8adad0ca91887be47324ee919dd96c1a
+# Source0-md5:	38e5d0cd318a62c3c358b894bf563948
 Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-gecos-optional.patch
