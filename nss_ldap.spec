@@ -1,19 +1,20 @@
-# $Revision: 1.47 $Date: 2003-05-12 15:12:16 $
+# $Revision: 1.48 $Date: 2003-05-17 23:47:39 $
 #
 # Conditional builds:
-# --with openldap1 - build with openldap < 2.0.0
+# _with_openldap1 - build with openldap < 2.0.0
 #
 Summary:	LDAP Name Service Switch Module
 Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	202
+Version:	207
 Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am_fixes.patch
+Patch1:		%{name}-nolibs.patch
 URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -27,7 +28,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 nss_ldap is a C library extension (NSS module) which allows X.500 and
 LDAP directory servers to be used as a primary source of aliases,
-ethers, groups, hosts, networks, protocol, users, RPCs, services and
+ethers, groups, hosts, networks, protocols, users, RPCs, services and
 shadow passwords (instead of or in addition to using flat files or
 NIS).
 
@@ -47,7 +48,10 @@ etc.
 
 %description -l pl
 To jest nss_ldap - modu³ serwisu nazw odczytuj±cy dane z LDAP, który
-mo¿na u¿ywaæ z glibc.
+mo¿na u¿ywaæ z glibc. Pozwala na korzystanie z serwerów X.500 i LDAP
+jako g³ównego ¼ród³a aliasów, grup, hostów, sieci, protoko³ów,
+u¿ytkowników, RPC, us³ug i hase³ (zamiast lub oprócz zwyk³ych plików
+lub NIS).
 
 %description -l pt_BR
 Esse pacote contém dois clientes de acesso a LDAP: nss_ldap e
@@ -65,7 +69,8 @@ etc.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
