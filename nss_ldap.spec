@@ -1,13 +1,15 @@
-# $Revision: 1.41 $Date: 2002-03-24 23:28:22 $
+# $Revision: 1.42 $Date: 2002-04-10 20:42:50 $
 #
 # Conditional builds:
 # --with openldap1 - build with openldap < 2.0.0
 #
 Summary:	LDAP Name Service Switch Module
+Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
+Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	173
-Release:	3
+Version:	186
+Release:	1
 License:	LGPL
 Group:		Base
 Source0:	ftp://ftp.padl.com/pub/%{name}-%{version}.tar.gz
@@ -23,12 +25,43 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_libdir		/lib
 
 %description
-This is nss_ldap, a name service switch module that can be used with
-glibc-2.1.xx.
+nss_ldap is a C library extension (NSS module) which allows X.500 and
+LDAP directory servers to be used as a primary source of aliases,
+ethers, groups, hosts, networks, protocol, users, RPCs, services and
+shadow passwords (instead of or in addition to using flat files or
+NIS).
+
+%description -l es
+Este paquete contiene dos clientes de acceso a LDAP: nss_ldap y
+pam_ldap.
+
+nss_ldap son una serie de extensiones para la biblioteca C que
+permiten que directorios X.500 y LDAP se usen como fuente de alias,
+grupos, máquinas, protocolos, usuarios, RPCs, etc. (en vez de, o en
+añadidura a, archivos normales o NIS)
+
+pam_ldap es un módulo para Linux-PAM que da soporte al intercambio de
+señas, clientes V2, Netscape SSL, ypldapd, políticas de contraseñas
+Netscape Directory Server, autorización de acceso, hashes codificados,
+etc.
 
 %description -l pl
 To jest nss_ldap - modu³ serwisu nazw odczytuj±cy dane z LDAP, który
 mo¿na u¿ywaæ z glibc.
+
+%description -l pt_BR
+Esse pacote contém dois clientes de acesso a LDAP: nss_ldap e
+pam_ldap.
+
+nss_ldap é uma série de extensões para a biblioteca C que permitem que
+diretórios X.500 e LDAP sejam usados como fonte de apelidos, grupos,
+máquinas, protocolos, usuários, RPCs, etc. (ao invés de, ou em adição
+a, arquivos normais ou NIS)
+
+pam_ldap é um módulo para o Linux-PAM que dá suporte a troca de
+senhas, clientes V2, Netscape SSL, ypldapd, políticas de senhas
+Netscape Directory Server, autorização de acesso, hashes encriptados,
+etc.
 
 %prep
 %setup -q
