@@ -1,4 +1,4 @@
-# $Revision: 1.12 $Date: 2000-03-29 22:17:38 $
+# $Revision: 1.13 $Date: 2000-04-01 11:15:08 $
 Summary:	LDAP Name Service Switch Module
 Name:		nss_ldap
 Version:	107
@@ -9,7 +9,7 @@ Group(pl):	Bazowe
 Source0:	ftp://ftp.padl.com/pub/%{name}-%{version}.tar.gz
 URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	openldap-devel 
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description 
 This is nss_ldap, a name service switch module that can be used with
