@@ -88,7 +88,7 @@ rm -f missing
 	--enable-rfc2307bis \
 %endif
 	--enable-paged-results \
-	--enable-configurable-krb5-ccname
+	--enable-configurable-krb5-ccname-env
 
 %{__make}
 
