@@ -29,7 +29,7 @@ diff -urN nss_ldap-238.orig/Makefile.am nss_ldap-238/Makefile.am
  #INCLUDES = -I$(top_builddir) -I$(srcdir)
  
  if GLIBC
-@@ -42,24 +36,12 @@
+@@ -39,24 +39,12 @@
  NSS_LDAP_NSS_VERSIONED = libnss_ldap.so.$(NSS_VERS)
  endif
  
@@ -48,41 +48,42 @@ diff -urN nss_ldap-238.orig/Makefile.am nss_ldap-238/Makefile.am
  # AIX install instructions per doc/README.AIX
  
  install-exec-local: nss_ldap.so NSS_LDAP
--	mkdir -p $(DESTDIR)$(libdir)/netsvc/dynload
+-	$(mkinstalldirs) $(DESTDIR)$(libdir)/netsvc/dynload
  	$(INSTALL_PROGRAM) -o $(INST_UID) -g $(INST_GID) nss_ldap.so $(DESTDIR)$(libdir)/netsvc/dynload/nss_ldap.so
--	mkdir -p $(DESTDIR)$(libdir)/security
+-	$(mkinstalldirs) $(DESTDIR)$(libdir)/security
  	$(INSTALL_PROGRAM) -o $(INST_UID) -g $(INST_GID) NSS_LDAP $(DESTDIR)$(libdir)/security/NSS_LDAP
  
  else
-@@ -69,19 +51,14 @@
+@@ -66,21 +54,16 @@
  install-exec-local: nss_ldap.so
  	@$(NORMAL_INSTALL)
  if GLIBC
 -	-rm -f $(DESTDIR)$(libdir)/$(NSS_LDAP_LIBC_VERSIONED)
+ 	$(mkinstalldirs) $(DESTDIR)$(libdir)
 -	$(INSTALL_PROGRAM) -o $(INST_UID) -g $(INST_GID) nss_ldap.so $(DESTDIR)$(libdir)/$(NSS_LDAP_LIBC_VERSIONED)
 +	$(INSTALL_PROGRAM) nss_ldap.so $(DESTDIR)$(libdir)/$(NSS_LDAP_LIBC_VERSIONED)
- 	$(mkinstalldirs) $(DESTDIR)$(libdir)
  	(cd $(DESTDIR)$(libdir); ln -sf $(NSS_LDAP_LIBC_VERSIONED) $(NSS_LDAP_NSS_VERSIONED))
  	$(mkinstalldirs) $(DESTDIR)/usr$(libdir)
  	(cd $(DESTDIR)/usr$(libdir); ln -sf ../..$(libdir)/$(NSS_LDAP_NSS_VERSIONED) .)
  else
+ 	$(mkinstalldirs) $(DESTDIR)$(libdir)
 -if HPUX
 -	$(INSTALL_PROGRAM) -o $(INST_UID) -g $(INST_GID) nss_ldap.so $(DESTDIR)$(libdir)/libnss_ldap.1
 -else
 -	$(INSTALL_PROGRAM) -o $(INST_UID) -g $(INST_GID) nss_ldap.so $(DESTDIR)$(libdir)/nss_ldap.so.1
--	(cd $(DESTDIR)$(libdir); rm -f nss_ldap.so; ln -s nss_ldap.so.1 nss_ldap.so)
--endif
 +	$(INSTALL_PROGRAM) nss_ldap.so $(DESTDIR)$(libdir)/nss_ldap.so.1
-+	-ln -fs $(DESTDIR)$(libdir)/nss_ldap.so.1 $(DESTDIR)$(libdir)/nss_ldap.so
+ 	(cd $(DESTDIR)$(libdir); rm -f nss_ldap.so; ln -s nss_ldap.so.1 nss_ldap.so)
  endif
+-endif
  
  endif
-@@ -90,9 +67,9 @@
+ 
+@@ -88,9 +71,9 @@
  	@$(NORMAL_INSTALL)
- 	@if test ! -f $(DESTDIR)$(sysconfdir)/ldap.conf; then \
- 		$(mkinstalldirs) $(DESTDIR)$(sysconfdir); \
--		$(INSTALL_DATA) -o $(INST_UID) -g $(INST_GID) $(srcdir)/ldap.conf $(DESTDIR)$(sysconfdir)/ldap.conf; \
-+		$(INSTALL_DATA) $(srcdir)/ldap.conf $(DESTDIR)$(sysconfdir)/ldap.conf; \
+ 	@if test ! -f $(DESTDIR)$(NSS_LDAP_PATH_CONF); then \
+ 		$(mkinstalldirs) $(DESTDIR)$(dir $(NSS_LDAP_PATH_CONF)); \
+-		$(INSTALL_DATA) -o $(INST_UID) -g $(INST_GID) $(srcdir)/ldap.conf $(DESTDIR)$(NSS_LDAP_PATH_CONF); \
++		$(INSTALL_DATA) $(srcdir)/ldap.conf $(DESTDIR)$(NSS_LDAP_PATH_CONF); \
  	fi
 -	$(INSTALL_DATA) -o $(INST_UID) -g $(INST_GID) $(srcdir)/nsswitch.ldap $(DESTDIR)$(sysconfdir)/nsswitch.ldap; 
 +	$(INSTALL_DATA) $(srcdir)/nsswitch.ldap $(DESTDIR)$(sysconfdir)/nsswitch.ldap; 
