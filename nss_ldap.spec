@@ -1,5 +1,3 @@
-# TODO
-# - SECURITY http://security.gentoo.org/glsa/glsa-200507-13.xml
 #
 # Conditional builds:
 %bcond_without mapping	# build without support for schema mapping/rfc2307bis
