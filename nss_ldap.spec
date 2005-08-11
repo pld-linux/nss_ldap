@@ -1,6 +1,6 @@
 #
 # Conditional builds:
-%bcond_without mapping	# build without support for schema mapping/rfc2307bis
+%bcond_without	mapping	# build without support for schema mapping/rfc2307bis
 #
 Summary:	LDAP Name Service Switch Module
 Summary(es):	Biblioteca NSS para LDAP
