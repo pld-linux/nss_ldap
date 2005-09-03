@@ -1,4 +1,4 @@
-# $Revision: 1.48.2.7 $Date: 2005-08-10 10:58:47 $
+# $Revision: 1.48.2.8 $Date: 2005-09-03 13:14:28 $
 #
 # Conditional builds:
 %bcond_with	openldap1	# build with openldap < 2.0.0
@@ -9,16 +9,15 @@ Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	239
+Version:	240
 Release:	2
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
-# Source0-md5:	e30e3a3035e75933cd1a0acdeded1394
+# Source0-md5:	7234bf125e22ab82b67a353799a0d616
 Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-gecos-optional.patch
-Patch3:		%{name}-CAN-2005-2069.patch
 URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -76,7 +75,6 @@ etc.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p0
 
 %build
 rm -f missing
