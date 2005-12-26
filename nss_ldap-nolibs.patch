@@ -1,0 +1,28 @@
+diff -ur nss_ldap-226.orig/configure.in nss_ldap-226/configure.in
+--- nss_ldap-226.orig/configure.in	2004-09-28 04:20:11.000000000 +0200
++++ nss_ldap-226/configure.in	2004-10-06 16:20:33.298152312 +0200
+@@ -157,9 +157,10 @@
+ AC_CHECK_HEADERS(gssapi/gssapi_krb5.h gssapi.h)
+
+ AC_CHECK_LIB(resolv, main)
+-AC_CHECK_LIB(nsl, main)
+ AC_CHECK_LIB(socket, main)
+
++AC_SEARCH_LIBS(gethostbyname, nsl)
++
+ AC_CHECK_FUNCS(strtok_r)
+ AC_CHECK_FUNCS(sigaction)
+ AC_CHECK_FUNCS(sigset)
+@@ -191,8 +191,10 @@
+   with_ldap_lib=auto
+ fi
+ 
+-AC_CHECK_LIB(dl, dlopen,[LIBS="-ldl $LIBS"],,$LIBS)
+-dnl AC_CHECK_LIB(db, main,[LIBS="-ldb $LIBS"],,$LIBS)
++dnl AC_CHECK_LIB(dl, dlopen,[LIBS="-ldl $LIBS"],,$LIBS)
++if test "$enable_rfc2307bis" = "yes" -o "$enable_schema_mapping" = "yes" ; then
++	AC_CHECK_LIB(db, main,[LIBS="-ldb $LIBS"],,$LIBS)
++fi
+ 
+ AC_CHECK_LIB(gssapi, gss_krb5_ccache_name,[LIBS="-lgssapi $LIBS" found_gssapi_lib=yes],,$LIBS)
+ if test -z "$found_gssapi_lib"; then
