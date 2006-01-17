@@ -8,7 +8,7 @@ Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
 Version:	245.1
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
@@ -20,7 +20,7 @@ URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_mapping:BuildRequires:	db-devel}
-BuildRequires:	openldap-devel >= 2.0.0
+BuildRequires:	openldap-devel >= 2.3.0
 BuildRequires:	cyrus-sasl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
