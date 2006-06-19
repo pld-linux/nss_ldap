@@ -1,0 +1,12 @@
+diff -ur nss_ldap-250.orig/ldap-grp.c nss_ldap-250/ldap-grp.c
+--- nss_ldap-250.orig/ldap-grp.c	2006-04-27 03:19:00.000000000 +0200
++++ nss_ldap-250/ldap-grp.c	2006-06-12 10:06:35.000000000 +0200
+@@ -344,7 +344,7 @@
+ 
+       groupMembersCount = 0;	/* number of members in this group */
+ 
+-      (void) do_get_range_values (e, uniquemember_attrs[0], &start, &end, &dnValues);
++      (void) do_get_range_values (e, uniquemember_attr, &start, &end, &dnValues);
+       if (dnValues != NULL)
+ 	{
+ 	  groupMembersCount += ldap_count_values (dnValues);
