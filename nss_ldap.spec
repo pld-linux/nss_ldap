@@ -7,16 +7,17 @@ Summary(es):	Biblioteca NSS para LDAP
 Summary(pl):	Modu³ NSS LDAP
 Summary(pt_BR):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	251
+Version:	253
 Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
-# Source0-md5:	a80718b3f7cf46f2579a26f9d6fbcd46
+# Source0-md5:	e3d37f59402b01c9cbf8f7ee888b3e6a
 Patch0:		%{name}-am_fixes.patch
-Patch1:		%{name}-nolibs.patch
-Patch2:		%{name}-gecos-optional.patch
-Patch3:		%{name}-group_range_fix.patch
+Patch1:		%{name}-auxprop.patch
+Patch2:		%{name}-nolibs.patch
+Patch3:		%{name}-gecos-optional.patch
+Patch4:		%{name}-group_range_fix.patch
 URL:		http://www.padl.com/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -72,9 +73,10 @@ etc.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
+%patch1 -p0
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{__aclocal}
