@@ -1,0 +1,12 @@
+--- configure.in.orig	2006-09-13 08:42:08.000000000 +0200
++++ configure.in	2006-10-31 12:27:37.000000000 +0100
+@@ -259,7 +259,8 @@
+ dnl AC_CHECK_LIB(k5crypto, main,[LIBS="-lk5crypto $LIBS"],,$LIBS)
+ dnl AC_CHECK_LIB(krb5, main,[LIBS="-lkrb5 $LIBS"],,$LIBS)
+ dnl AC_CHECK_LIB(krb4, main,[LIBS="-lkrb4 $LIBS"],,$LIBS)
+-dnl AC_CHECK_LIB(sasl, sasl_client_init,[LIBS="-lsasl $LIBS"],,$LIBS)
++# doesn't build in PLD otherwise
++AC_CHECK_LIB(sasl, sasl_client_init,[LIBS="-lsasl $LIBS"],,$LIBS)
+ 
+ if test -z "$found_ldap_lib" -a \( $with_ldap_lib = auto -o $with_ldap_lib = umich -o $with_ldap_lib = openldap \); then
+   AC_CHECK_LIB(lber, main)
