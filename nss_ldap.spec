@@ -18,7 +18,7 @@ Patch1:		%{name}-auxprop.patch
 Patch2:		%{name}-nolibs.patch
 Patch3:		%{name}-gecos-optional.patch
 Patch4:		%{name}-group_range_fix.patch
-URL:		http://www.padl.com/nss_ldap.html
+URL:		http://www.padl.com/OSS/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_mapping:BuildRequires:	db-devel}
