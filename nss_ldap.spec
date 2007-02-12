@@ -3,9 +3,9 @@
 %bcond_without	mapping	# build without support for schema mapping/rfc2307bis
 #
 Summary:	LDAP Name Service Switch Module
-Summary(es):	Biblioteca NSS para LDAP
-Summary(pl):	Modu≥ NSS LDAP
-Summary(pt_BR):	Biblioteca NSS para LDAP
+Summary(es.UTF-8):   Biblioteca NSS para LDAP
+Summary(pl.UTF-8):   Modu≈Ç NSS LDAP
+Summary(pt_BR.UTF-8):   Biblioteca NSS para LDAP
 Name:		nss_ldap
 Version:	253
 Release:	1
@@ -35,39 +35,39 @@ ethers, groups, hosts, networks, protocols, users, RPCs, services and
 shadow passwords (instead of or in addition to using flat files or
 NIS).
 
-%description -l es
+%description -l es.UTF-8
 Este paquete contiene dos clientes de acceso a LDAP: nss_ldap y
 pam_ldap.
 
 nss_ldap son una serie de extensiones para la biblioteca C que
 permiten que directorios X.500 y LDAP se usen como fuente de alias,
-grupos, m·quinas, protocolos, usuarios, RPCs, etc. (en vez de, o en
-aÒadidura a, archivos normales o NIS)
+grupos, m√°quinas, protocolos, usuarios, RPCs, etc. (en vez de, o en
+a√±adidura a, archivos normales o NIS)
 
-pam_ldap es un mÛdulo para Linux-PAM que da soporte al intercambio de
-seÒas, clientes V2, Netscape SSL, ypldapd, polÌticas de contraseÒas
-Netscape Directory Server, autorizaciÛn de acceso, hashes codificados,
+pam_ldap es un m√≥dulo para Linux-PAM que da soporte al intercambio de
+se√±as, clientes V2, Netscape SSL, ypldapd, pol√≠ticas de contrase√±as
+Netscape Directory Server, autorizaci√≥n de acceso, hashes codificados,
 etc.
 
-%description -l pl
-To jest nss_ldap - modu≥ serwisu nazw odczytuj±cy dane z LDAP, ktÛry
-moøna uøywaÊ z glibc. Pozwala na korzystanie z serwerÛw X.500 i LDAP
-jako g≥Ûwnego ºrÛd≥a aliasÛw, grup, hostÛw, sieci, protoko≥Ûw,
-uøytkownikÛw, RPC, us≥ug i hase≥ (zamiast lub oprÛcz zwyk≥ych plikÛw
+%description -l pl.UTF-8
+To jest nss_ldap - modu≈Ç serwisu nazw odczytujƒÖcy dane z LDAP, kt√≥ry
+mo≈ºna u≈ºywaƒá z glibc. Pozwala na korzystanie z serwer√≥w X.500 i LDAP
+jako g≈Ç√≥wnego ≈∫r√≥d≈Ça alias√≥w, grup, host√≥w, sieci, protoko≈Ç√≥w,
+u≈ºytkownik√≥w, RPC, us≈Çug i hase≈Ç (zamiast lub opr√≥cz zwyk≈Çych plik√≥w
 lub NIS).
 
-%description -l pt_BR
-Esse pacote contÈm dois clientes de acesso a LDAP: nss_ldap e
+%description -l pt_BR.UTF-8
+Esse pacote cont√©m dois clientes de acesso a LDAP: nss_ldap e
 pam_ldap.
 
-nss_ldap È uma sÈrie de extensıes para a biblioteca C que permitem que
-diretÛrios X.500 e LDAP sejam usados como fonte de apelidos, grupos,
-m·quinas, protocolos, usu·rios, RPCs, etc. (ao invÈs de, ou em adiÁ„o
+nss_ldap √© uma s√©rie de extens√µes para a biblioteca C que permitem que
+diret√≥rios X.500 e LDAP sejam usados como fonte de apelidos, grupos,
+m√°quinas, protocolos, usu√°rios, RPCs, etc. (ao inv√©s de, ou em adi√ß√£o
 a, arquivos normais ou NIS)
 
-pam_ldap È um mÛdulo para o Linux-PAM que d· suporte a troca de
-senhas, clientes V2, Netscape SSL, ypldapd, polÌticas de senhas
-Netscape Directory Server, autorizaÁ„o de acesso, hashes encriptados,
+pam_ldap √© um m√≥dulo para o Linux-PAM que d√° suporte a troca de
+senhas, clientes V2, Netscape SSL, ypldapd, pol√≠ticas de senhas
+Netscape Directory Server, autoriza√ß√£o de acesso, hashes encriptados,
 etc.
 
 %prep
