@@ -1,10 +1,10 @@
-# $Revision: 1.41.2.2 $Date: 2003-07-11 01:34:20 $
+# $Revision: 1.41.2.3 $Date: 2007-02-12 13:20:14 $
 #
 # Conditional builds:
 # --with openldap1 - build with openldap < 2.0.0
 #
 Summary:	LDAP Name Service Switch Module
-Summary(pl):	Modu³ NSS LDAP
+Summary(pl.UTF-8):   ModuÅ‚ NSS LDAP
 Name:		nss_ldap
 Version:	186
 Release:	0.1
@@ -26,9 +26,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This is nss_ldap, a name service switch module that can be used with
 glibc-2.1.xx.
 
-%description -l pl
-To jest nss_ldap - modu³ serwisu nazw odczytuj±cy dane z LDAP, który
-mo¿na u¿ywaæ z glibc.
+%description -l pl.UTF-8
+To jest nss_ldap - moduÅ‚ serwisu nazw odczytujÄ…cy dane z LDAP, ktÃ³ry
+moÅ¼na uÅ¼ywaÄ‡ z glibc.
 
 %prep
 %setup -q
