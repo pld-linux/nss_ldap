@@ -7,12 +7,12 @@ Summary(es.UTF-8):   Biblioteca NSS para LDAP
 Summary(pl.UTF-8):   Moduł NSS LDAP
 Summary(pt_BR.UTF-8):   Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	253
+Version:	254
 Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
-# Source0-md5:	e3d37f59402b01c9cbf8f7ee888b3e6a
+# Source0-md5:	00475b790d3aff3ccd40a1ab4520965e
 Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-auxprop.patch
 Patch2:		%{name}-nolibs.patch
