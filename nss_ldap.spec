@@ -3,9 +3,9 @@
 %bcond_without	mapping	# build without support for schema mapping/rfc2307bis
 #
 Summary:	LDAP Name Service Switch Module
-Summary(es.UTF-8):   Biblioteca NSS para LDAP
-Summary(pl.UTF-8):   Moduł NSS LDAP
-Summary(pt_BR.UTF-8):   Biblioteca NSS para LDAP
+Summary(es.UTF-8):	Biblioteca NSS para LDAP
+Summary(pl.UTF-8):	Moduł NSS LDAP
+Summary(pt_BR.UTF-8):	Biblioteca NSS para LDAP
 Name:		nss_ldap
 Version:	254
 Release:	1
