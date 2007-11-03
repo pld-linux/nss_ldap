@@ -22,7 +22,7 @@ URL:		http://www.padl.com/OSS/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_mapping:BuildRequires:	db-devel}
-BuildRequires:	openldap-devel >= 2.3.0
+BuildRequires:	openldap-devel >= 2.4.6
 BuildRequires:	cyrus-sasl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
