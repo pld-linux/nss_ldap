@@ -1,29 +1,26 @@
-#
-# Conditional builds:
-%bcond_without	mapping	# build without support for schema mapping/rfc2307bis
-#
 Summary:	LDAP Name Service Switch Module
 Summary(es.UTF-8):	Biblioteca NSS para LDAP
 Summary(pl.UTF-8):	Moduł NSS LDAP
 Summary(pt_BR.UTF-8):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	255
+Version:	259
 Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
-# Source0-md5:	f0d7db8f4d1fe5974900aac7fb87c718
+# Source0-md5:	ef29690c6e5f02dffbfd0f32f296a97b
 Patch0:		%{name}-am_fixes.patch
-Patch1:		%{name}-auxprop.patch
-Patch2:		%{name}-nolibs.patch
-Patch3:		%{name}-gecos-optional.patch
-Patch4:		%{name}-group_range_fix.patch
+Patch1:		%{name}-nolibs.patch
+Patch2:		%{name}-gecos-optional.patch
+Patch3:		%{name}-group_range_fix.patch
+Patch4:		%{name}-parse.patch
+Patch5:		%{name}-soname.patch
 URL:		http://www.padl.com/OSS/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{?with_mapping:BuildRequires:	db-devel}
 BuildRequires:	openldap-devel >= 2.4.6
 BuildRequires:	cyrus-sasl-devel
+Requires:	openldap-nss-config
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libdir		/%{_lib}
@@ -73,10 +70,11 @@ etc.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p0
+%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 sed -i -e "s#NSS_VERS =.*#NSS_VERS = $(ls /%{_lib}/libnss_files.so.? | tail -n 1 | sed -e 's#/%{_lib}/libnss_files\.so\.\(.*\)#\1#')#g" Makefile.am
 sed -i -e "s#LIBC_VERS =.*#LIBC_VERS = $(ls /%{_lib}/libc-*.so | tail -n 1 |sed -e 's#/%{_lib}/libc-\(.*\)\.so#\1#')#g" Makefile.am
@@ -88,12 +86,11 @@ sed -i -e "s#LIBC_VERS =.*#LIBC_VERS = $(ls /%{_lib}/libc-*.so | tail -n 1 |sed 
 %{__automake}
 %configure \
 	--with-ldap-lib=openldap \
-%if %{with mapping}
-	--enable-schema-mapping \
 	--enable-rfc2307bis \
-%endif
 	--enable-paged-results \
-	--enable-configurable-krb5-ccname-env
+	--enable-configurable-krb5-ccname-env \
+	--enable-configurable-krb5-ccname-gssapi \
+	--enable-configurable-krb5-keytab
 
 %{__make}
 
