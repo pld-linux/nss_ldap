@@ -3,17 +3,16 @@ Summary(es.UTF-8):	Biblioteca NSS para LDAP
 Summary(pl.UTF-8):	Moduł NSS LDAP
 Summary(pt_BR.UTF-8):	Biblioteca NSS para LDAP
 Name:		nss_ldap
-Version:	261
-Release:	2
+Version:	264
+Release:	0.1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
-# Source0-md5:	1057ce8b586c507f65657353bce97791
+# Source0-md5:	eebab40c6ce2f54e5c377b4895c0c93a
 Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-gecos-optional.patch
 Patch3:		%{name}-group_range_fix.patch
-Patch4:		%{name}-parse.patch
 Patch5:		%{name}-soname.patch
 URL:		http://www.padl.com/OSS/nss_ldap.html
 BuildRequires:	autoconf
@@ -73,7 +72,6 @@ etc.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 %patch5 -p1
 
 sed -i -e "s#NSS_VERS =.*#NSS_VERS = $(ls /%{_lib}/libnss_files.so.? | tail -n 1 | sed -e 's#/%{_lib}/libnss_files\.so\.\(.*\)#\1#')#g" Makefile.am
