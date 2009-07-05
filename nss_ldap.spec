@@ -4,7 +4,7 @@ Summary(pl.UTF-8):	Moduł NSS LDAP
 Summary(pt_BR.UTF-8):	Biblioteca NSS para LDAP
 Name:		nss_ldap
 Version:	264
-Release:	0.1
+Release:	1
 License:	LGPL
 Group:		Base
 Source0:	http://www.padl.com/download/%{name}-%{version}.tar.gz
@@ -13,7 +13,8 @@ Patch0:		%{name}-am_fixes.patch
 Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-gecos-optional.patch
 Patch3:		%{name}-group_range_fix.patch
-Patch5:		%{name}-soname.patch
+Patch4:		%{name}-soname.patch
+Patch5:		%{name}-heimdal.patch
 URL:		http://www.padl.com/OSS/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -72,6 +73,7 @@ etc.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 %patch5 -p1
 
 sed -i -e "s#NSS_VERS =.*#NSS_VERS = $(ls /%{_lib}/libnss_files.so.? | tail -n 1 | sed -e 's#/%{_lib}/libnss_files\.so\.\(.*\)#\1#')#g" Makefile.am
@@ -82,6 +84,7 @@ sed -i -e "s#LIBC_VERS =.*#LIBC_VERS = $(ls /%{_lib}/libc-*.so | tail -n 1 |sed 
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+CFLAGS="%{rpmcflags} -DHEIMDAL" ; export CFLAGS
 %configure \
 	--with-ldap-lib=openldap \
 	--enable-rfc2307bis \
