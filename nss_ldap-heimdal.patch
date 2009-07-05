@@ -1,0 +1,67 @@
+diff -ur nss_ldap-264/ldap-init-krb5-cache.c nss_ldap-264-heim/ldap-init-krb5-cache.c
+--- nss_ldap-264/ldap-init-krb5-cache.c	2008-10-30 21:50:15.000000000 +0100
++++ nss_ldap-264-heim/ldap-init-krb5-cache.c	2009-07-06 00:02:37.816913503 +0200
+@@ -98,6 +98,7 @@
+ #include <errno.h>
+ #include <syslog.h>
+ #include <time.h>
++#include <limits.h>
+ #ifndef HEIMDAL
+ #include <profile.h>
+ #endif
+@@ -218,15 +219,25 @@
+   assert (context != NULL);
+   if (!(code = krb5_kt_resolve (context, __ktname, &__keytab)))
+     {
++#ifdef HEIMDAL
++      char buf[KT_PATH_MAX];
++      krb5_kt_get_type (context, __keytab, buf, KRB5_KT_PREFIX_MAX_LEN);
++      debug ("==> krb5_cache_kt_is_accessible: resolved ktname %s - %s",
++	     __ktname, buf);
++      if (strcmp ("FILE", buf) == 0)
++#else
+       debug ("==> krb5_cache_kt_is_accessible: resolved ktname %s - %s",
+ 	     __ktname, krb5_kt_get_type (context, __keytab));
+       if (strcmp ("FILE", krb5_kt_get_type (context, __keytab)) == 0)
++#endif
+ 	{
+ 	  debug ("==> krb5_cache_kt_is_accessible: kt type = FILE");
+ 	  uid_t ruid = getuid ();
+ 	  gid_t rgid = getgid ();
+ 	  gid_t egid = getegid ();
++#ifndef HEIMDAL
+ 	  char buf[KT_PATH_MAX];
++#endif
+ 	  if (ruid != euid)
+ 	    {
+ 	      setreuid (euid, ruid);
+@@ -455,7 +458,7 @@
+       retval = gethostname (hostname, HOST_NAME_MAX);
+       if (!retval)
+ 	{
+-	  hostname[HOST_NAME_MAX] = '\0';
++	  hostname[HOST_NAME_MAX-1] = '\0';
+ 	  __saslid = malloc (sizeof (hostname) + 6);
+ 	  strcpy (__saslid, "host/");
+ 	  strcat (__saslid, hostname);
+@@ -542,7 +545,7 @@
+     }
+   profile_release (profile);
+ #else
+-  skew = context->max_skew;
++  skew = krb5_get_max_time_skew (context);
+ #endif
+   ccname = krb5_cache_get_ccname (config);
+   debug ("==> krb5_cache_setup: credential cache name %s",
+@@ -671,7 +674,11 @@
+ 		     ccname ? ccname : "NULL");
+ 		}
+ 	    }
++#ifdef HEIMDAL
++	  free (principal_name);
++#else
+ 	  krb5_free_unparsed_name (context, principal_name);
++#endif
+ 	}
+     }
+ 
