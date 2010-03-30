@@ -90,3 +90,10 @@ diff -urN nss_ldap-238.orig/Makefile.am nss_ldap-238/Makefile.am
  
  uninstall-local:
  	@$(NORMAL_UNINSTALL)
+@@ -86,5 +86,5 @@
+ 	@$(NORMAL_UNINSTALL)
+ 
+ vers.c: $(top_srcdir)/CVSVersionInfo.txt
+-	CVSVERSIONDIR=$(top_srcdir) vers_string -v
++	CVSVERSIONDIR=$(top_srcdir) ./vers_string -v
+ 
