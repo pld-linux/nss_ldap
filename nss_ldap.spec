@@ -18,8 +18,8 @@ Patch5:		%{name}-heimdal.patch
 URL:		http://www.padl.com/OSS/nss_ldap.html
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	openldap-devel >= 2.4.6
 BuildRequires:	cyrus-sasl-devel
+BuildRequires:	openldap-devel >= 2.3.0
 Requires:	openldap-nss-config
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -76,8 +76,8 @@ etc.
 %patch4 -p1
 %patch5 -p1
 
-sed -i -e "s#NSS_VERS =.*#NSS_VERS = $(ls /%{_lib}/libnss_files.so.? | tail -n 1 | sed -e 's#/%{_lib}/libnss_files\.so\.\(.*\)#\1#')#g" Makefile.am
-sed -i -e "s#LIBC_VERS =.*#LIBC_VERS = $(ls /%{_lib}/libc-*.so | tail -n 1 |sed -e 's#/%{_lib}/libc-\(.*\)\.so#\1#')#g" Makefile.am
+%{__sed} -i -e "s#NSS_VERS =.*#NSS_VERS = $(ls /%{_lib}/libnss_files.so.? | tail -n 1 | sed -e 's#/%{_lib}/libnss_files\.so\.\(.*\)#\1#')#g" Makefile.am
+%{__sed} -i -e "s#LIBC_VERS =.*#LIBC_VERS = $(ls /%{_lib}/libc-*.so | tail -n 1 |sed -e 's#/%{_lib}/libc-\(.*\)\.so#\1#')#g" Makefile.am
 
 %build
 %{__aclocal}
