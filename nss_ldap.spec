@@ -69,12 +69,12 @@ etc.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
+%patch -P4 -p1
+%patch -P5 -p1
 
 %{__sed} -i -e "s#NSS_VERS =.*#NSS_VERS = $(ls /%{_lib}/libnss_files.so.? | tail -n 1 | sed -e 's#/%{_lib}/libnss_files\.so\.\(.*\)#\1#')#g" Makefile.am
 %{__sed} -i -e "s#LIBC_VERS =.*#LIBC_VERS = $(ls /%{_lib}/libc-*.so | tail -n 1 |sed -e 's#/%{_lib}/libc-\(.*\)\.so#\1#')#g" Makefile.am
